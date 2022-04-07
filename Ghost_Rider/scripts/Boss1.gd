@@ -5,7 +5,7 @@ onready var playback = anim_tree.get("parameters/playback")
 
 var SPEED = 200
 var ACCELERATION = 500
-var GRAVITY = 0.8
+var GRAVITY = 1
 var timer = 0 #Para el movimiento del fantasma
 
 var velocity = Vector2()
