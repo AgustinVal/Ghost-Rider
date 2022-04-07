@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://img/icon.png" type="Texture" id=1]
 [ext_resource path="res://img/2093-modified.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://img/Player/02.png" type="Texture" id=9]
 [ext_resource path="res://img/Player/04.png" type="Texture" id=10]
 [ext_resource path="res://img/Player/05.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Boss1.tscn" type="PackedScene" id=12]
 
 [sub_resource type="PhysicsMaterial" id=3]
 bounce = 1.0
@@ -54,7 +55,7 @@ animations = [ {
 [node name="Main" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 503, 471 )
+position = Vector2( 493, 497 )
 physics_material_override = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -74,7 +75,7 @@ visible = false
 position = Vector2( 512, 300 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2( 875, 79 )
+position = Vector2( 523, 66 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -88,7 +89,7 @@ scale = Vector2( 0.138648, 0.138648 )
 texture = ExtResource( 2 )
 
 [node name="Ghost_Intro" parent="." instance=ExtResource( 3 )]
-position = Vector2( 632, 271 )
+position = Vector2( 852, 270 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 196, 268 )
@@ -105,3 +106,6 @@ frames = SubResource( 5 )
 animation = "stay"
 frame = 3
 playing = true
+
+[node name="Boss1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 654, 164 )

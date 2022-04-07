@@ -1,15 +1,17 @@
 extends KinematicBody2D
 
-var linear_vel = Vector2.ZERO #Como obtengo la posicion del nodo¿?
+var velocity = Vector2()
 var SPEED = 200
+var ACCELERATION = 500
+var GRAVITY = 0.8
+var timer = 0 #Para el movimiento del fantasma
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+func take_damage(Node2D): #Cuando reciba daño por la luz
+	pass
+
 
 func _physics_process(delta):
-	var target_velY = Input.get_action_strength("down") -   Input.get_action_strength("up")
-	var target_velX = Input.get_action_strength("right") -  Input.get_action_strength("left")
-	linear_vel.y = lerp(linear_vel.y, target_velY * SPEED, 0.5)
-	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
-	linear_vel = move_and_slide(linear_vel)
+	timer += delta
+	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity.y += GRAVITY * cos(timer)
