@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/enemy_testing.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 539, 315 )
+scale = Vector2( 0.994257, 1 )
+
+[node name="enemy_testing" parent="." instance=ExtResource( 1 )]
+position = Vector2( 795, 305 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 495, 310 )

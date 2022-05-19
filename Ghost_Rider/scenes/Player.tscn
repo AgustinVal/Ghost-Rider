@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://img/Player/06.png" type="Texture" id=2]
 [ext_resource path="res://img/Player/03.png" type="Texture" id=3]
@@ -13,7 +13,7 @@
 script/source = "extends KinematicBody2D
 
 var linear_vel = Vector2.ZERO #Como obtengo la posicion del nodo¿?
-var SPEED = 200
+var SPEED = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +33,12 @@ func _physics_process(delta):
 	linear_vel.y = lerp(linear_vel.y, target_velY * SPEED, 0.5)
 	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
 	linear_vel = move_and_slide(linear_vel)
+
+
+func _on_Area2D_body_entered(body):
+	queue_free()
+	if body.has_method(\"Scared\") and Input.is_action_pressed(\"Boo\"):
+		body.Scared(self)
 "
 
 [sub_resource type="CapsuleShape2D" id=4]
@@ -46,6 +52,9 @@ animations = [ {
 "name": "stay",
 "speed": 4.0
 } ]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 159.003
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 1 )
@@ -61,3 +70,10 @@ shape = SubResource( 4 )
 frames = SubResource( 5 )
 animation = "stay"
 frame = 5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
