@@ -78,7 +78,7 @@ start_node = "idle"
 [sub_resource type="CircleShape2D" id=12]
 radius = 315.203
 
-[node name="Boss1" type="KinematicBody2D"]
+[node name="Boss1" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 2 )

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://img/Player/06.png" type="Texture" id=2]
 [ext_resource path="res://img/Player/03.png" type="Texture" id=3]
 [ext_resource path="res://img/Player/07.png" type="Texture" id=4]
@@ -8,32 +9,6 @@
 [ext_resource path="res://img/Player/02.png" type="Texture" id=7]
 [ext_resource path="res://img/Player/04.png" type="Texture" id=8]
 [ext_resource path="res://img/Player/05.png" type="Texture" id=9]
-
-[sub_resource type="GDScript" id=6]
-script/source = "extends KinematicBody2D
-
-var linear_vel = Vector2.ZERO #Como obtengo la posicion del nodo¿?
-var SPEED = 200
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
-onready var _animated_sprite = $AnimatedSprite
-
-func _process(_delta):
-	if Input.is_action_pressed(\"ui_right\"):
-		_animated_sprite.play(\"run\")
-	else:
-		_animated_sprite.stop()
-
-func _physics_process(delta):
-	var target_velY = Input.get_action_strength(\"down\") -   Input.get_action_strength(\"up\")
-	var target_velX = Input.get_action_strength(\"right\") -  Input.get_action_strength(\"left\")
-	linear_vel.y = lerp(linear_vel.y, target_velY * SPEED, 0.5)
-	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
-	linear_vel = move_and_slide(linear_vel)
-"
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 38.0
@@ -47,11 +22,14 @@ animations = [ {
 "speed": 4.0
 } ]
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 37.5899
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 1 )
 collision_layer = 2
-collision_mask = 3
-script = SubResource( 6 )
+collision_mask = 5
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -63,3 +41,12 @@ shape = SubResource( 4 )
 frames = SubResource( 5 )
 animation = "stay"
 frame = 5
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource( 7 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
