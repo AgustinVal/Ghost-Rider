@@ -22,6 +22,12 @@ func _physics_process(_delta):
 	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
 	linear_vel = move_and_slide(linear_vel)
 	
+	if Input.is_action_just_pressed("interact") and $RayCast2D.is_colliding():
+		var collider = $RayCast2D.get_collider()
+		if collider.has_method("interact"):
+			collider.interact()
+			print("is activated: ",collider.is_activated())
+	
 func take_damage(damage):
 	health -= damage
 
