@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var hurtbox = $Hurtbox
 onready var _animated_sprite = $AnimatedSprite
+onready var ray_cast = $RayCast2D
 
 var linear_vel = Vector2.ZERO 
 var SPEED = 200
@@ -22,8 +23,8 @@ func _physics_process(_delta):
 	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
 	linear_vel = move_and_slide(linear_vel)
 	
-	if Input.is_action_just_pressed("interact") and $RayCast2D.is_colliding():
-		var collider = $RayCast2D.get_collider()
+	if Input.is_action_just_pressed("interact") and ray_cast.is_colliding():
+		var collider = ray_cast.get_collider()
 		if collider.has_method("interact"):
 			collider.interact()
 			print("is activated: ",collider.is_activated())
@@ -37,4 +38,3 @@ func get_health():
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("enemy"):
 		take_damage(area.get_damage())
-	pass # Replace with function body.
