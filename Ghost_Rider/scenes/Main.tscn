@@ -104,7 +104,6 @@ shape = SubResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 5 )
 animation = "stay"
-frame = 3
 playing = true
 
 [node name="Boss1" parent="." instance=ExtResource( 12 )]
