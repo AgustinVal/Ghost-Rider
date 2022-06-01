@@ -15,6 +15,8 @@ script/source = "extends KinematicBody2D
 var linear_vel = Vector2.ZERO #Como obtengo la posicion del nodo¿?
 var SPEED = 200
 
+var SoundWave = preload(\"res://scenes/SoundWave.tscn\")
+onready var scare_spawn = $ScareSpawn
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -33,6 +35,14 @@ func _physics_process(delta):
 	linear_vel.y = lerp(linear_vel.y, target_velY * SPEED, 0.5)
 	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
 	linear_vel = move_and_slide(linear_vel)
+	
+	if  Input.is_action_just_pressed(\"Scare\"):
+		Scare()
+
+func Scare():
+	var wave =SoundWave.instance()
+	get_parent().add_child(wave)
+	wave.global_position = scare_spawn.global_position
 "
 
 [sub_resource type="CapsuleShape2D" id=4]
@@ -48,11 +58,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, 1 )
 script = SubResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
@@ -61,3 +67,6 @@ shape = SubResource( 4 )
 frames = SubResource( 5 )
 animation = "stay"
 frame = 5
+
+[node name="ScareSpawn" type="Position2D" parent="."]
+position = Vector2( 49, 0 )
