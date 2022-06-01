@@ -1,33 +1,30 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://img/Player/06.png" type="Texture" id=2]
-[ext_resource path="res://img/Player/03.png" type="Texture" id=3]
-[ext_resource path="res://img/Player/07.png" type="Texture" id=4]
-[ext_resource path="res://img/Player/08.png" type="Texture" id=5]
-[ext_resource path="res://img/Player/01.png" type="Texture" id=6]
-[ext_resource path="res://img/Player/02.png" type="Texture" id=7]
-[ext_resource path="res://img/Player/04.png" type="Texture" id=8]
-[ext_resource path="res://img/Player/05.png" type="Texture" id=9]
+[ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=6]
 script/source = "extends KinematicBody2D
 
 var linear_vel = Vector2.ZERO #Como obtengo la posicion del nodo¿?
 var SPEED = 200
-
+onready var anim_tree= $AnimationTree
+onready var playback = anim_tree.get(\"parameters/playback\")
 var SoundWave = preload(\"res://scenes/SoundWave.tscn\")
-onready var scare_spawn = $ScareSpawn
+onready var scare_spawn = $Pivot/ScareSpawn
+onready var pivot=$Pivot
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	anim_tree.active=true
 	pass # Replace with function body.
 	
-onready var _animated_sprite = $AnimatedSprite
+#onready var _animated_sprite = $AnimatedSprite
 
-func _process(_delta):
-	if Input.is_action_pressed(\"ui_right\"):
-		_animated_sprite.play(\"run\")
-	else:
-		_animated_sprite.stop()
+#func _process(_delta):
+#	if Input.is_action_pressed(\"ui_right\"):
+#		_animated_sprite.play(\"run\")
+#	else:
+#		_animated_sprite.stop()
 
 func _physics_process(delta):
 	var target_velY = Input.get_action_strength(\"down\") -   Input.get_action_strength(\"up\")
@@ -38,35 +35,90 @@ func _physics_process(delta):
 	
 	if  Input.is_action_just_pressed(\"Scare\"):
 		Scare()
+		
+	#Animation
+	if Input.is_action_just_pressed(\"right\"):# and not Input.is_action_just_pressed(\"left\"):
+		pivot.scale.x=1
+	if Input.is_action_just_pressed(\"left\"):# and not Input.is_action_just_pressed(\"right\"):
+		pivot.scale.x=-1
 
 func Scare():
 	var wave =SoundWave.instance()
 	get_parent().add_child(wave)
 	wave.global_position = scare_spawn.global_position
+	if pivot.scale.x<0:
+		wave.rotation = PI
 "
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 38.0
 height = 8.0
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "stay",
-"speed": 4.0
-} ]
+[sub_resource type="Animation" id=7]
+resource_name = "IDLE"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "IDLE"
+
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/IDLE/node = SubResource( 9 )
+states/IDLE/position = Vector2( 487, 77 )
+start_node = "IDLE"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
 [node name="Player" type="KinematicBody2D"]
 script = SubResource( 6 )
 
+[node name="Pivot" type="Node" parent="."]
+
+[node name="ScareSpawn" type="Position2D" parent="Pivot"]
+position = Vector2( 38, 0 )
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 1 )
+hframes = 8
+frame = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 5 )
-animation = "stay"
-frame = 5
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/IDLE = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
-[node name="ScareSpawn" type="Position2D" parent="."]
-position = Vector2( 49, 0 )
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 10 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 11 )
