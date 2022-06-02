@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://img/Enemy/Enemy IDLE.png" type="Texture" id=2]
@@ -49,6 +49,9 @@ start_node = "IDLE"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 14.0
+
 [node name="Enemy Testing" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -69,3 +72,10 @@ anims/RESET = SubResource( 3 )
 tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 6 )
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource( 7 )
