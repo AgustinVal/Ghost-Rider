@@ -11,6 +11,7 @@ func _ready():
 func _on_body_entered(body: Node):
 	if body.has_method("se_asusta"):
 		body.se_asusta(self)
+		queue_free()
 	#queue_free()
 	
 func _physics_process(delta):
