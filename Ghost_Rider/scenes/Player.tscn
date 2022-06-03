@@ -162,3 +162,7 @@ anims/Scare = SubResource( 13 )
 tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 11 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
