@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://img/Fondos/image.png" type="Texture" id=1]
 [ext_resource path="res://scenes/HealthBar.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://img/Fondos/Background-3.jpg" type="Texture" id=7]
 [ext_resource path="res://img/Fondos/Background-3_preview_rev_1.png" type="Texture" id=8]
 [ext_resource path="res://img/Fondos/Background-8.png" type="Texture" id=9]
-[ext_resource path="res://scenes/Player1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Ghost_Intro.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/sun_light.tscn" type="PackedScene" id=14]
 
@@ -1046,7 +1045,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Main" type="Node2D"]
 
 [node name="Image" type="Sprite" parent="."]
-visible = false
 position = Vector2( 1579.5, 204 )
 scale = Vector2( 1.23242, 0.640259 )
 z_index = -1
@@ -1114,13 +1112,5 @@ lever_node = NodePath("Lever")
 [node name="Lever" parent="Sun_Light2" instance=ExtResource( 4 )]
 position = Vector2( -26.6667, 23.5 )
 
-[node name="Player1" parent="." instance=ExtResource( 10 )]
-position = Vector2( 156, 119 )
-
-[node name="Camera2D" type="Camera2D" parent="Player1"]
-position = Vector2( 49, 1 )
-current = true
-
 [node name="Player" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 156, 122 )

@@ -1,20 +1,20 @@
 extends KinematicBody2D
 
 onready var hurtbox = $Hurtbox
-onready var _animated_sprite = $AnimatedSprite
 onready var ray_cast = $RayCast2D
+onready var anim_tree= $AnimationTree
+onready var scare_spawn = $ScareSpawn
+onready var playback = anim_tree.get("parameters/playback")
 
 var linear_vel = Vector2.ZERO 
 var SPEED = 200
 var health = 100
+var SoundWave = preload("res://scenes/SoundWave.tscn")
 
 	
 func _ready():
-	pass
+	anim_tree.active=true
 
-
-func _process(_delta):
-		_animated_sprite.stop()
 
 func _physics_process(_delta):
 	var target_velY = Input.get_action_strength("down") -   Input.get_action_strength("up")
@@ -28,6 +28,14 @@ func _physics_process(_delta):
 		if collider.has_method("interact"):
 			collider.interact()
 			print("is activated: ",collider.is_activated())
+	
+	if  Input.is_action_just_pressed("Boo"):
+		Scare()
+
+func Scare():
+	var wave =SoundWave.instance()
+	get_parent().add_child(wave)
+	wave.global_position = scare_spawn.global_position
 	
 func take_damage(damage):
 	health -= damage
