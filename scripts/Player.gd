@@ -7,7 +7,7 @@ onready var scare_spawn = $ScareSpawn
 onready var playback = anim_tree.get("parameters/playback")
 
 var linear_vel = Vector2.ZERO 
-var SPEED = 200
+var SPEED = 350
 var health = 100
 var SoundWave = preload("res://scenes/SoundWave.tscn")
 
@@ -39,10 +39,17 @@ func Scare():
 	
 func take_damage(damage):
 	health -= damage
+	if health<=0:
+		game_over()
 
 func get_health():
 	return health
 
 func _on_Hurtbox_area_entered(area):
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") or area.is_in_group("trap"):
 		take_damage(area.get_damage())
+
+func game_over():
+	print("GG EZ MANCO QL, perdiste")
+	
+	

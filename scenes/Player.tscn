@@ -93,7 +93,7 @@ shape = SubResource( 7 )
 rotation = -1.58723
 enabled = true
 cast_to = Vector2( 0, 100 )
-collision_mask = 8
+collision_mask = 16
 
 [node name="ScareSpawn" type="Position2D" parent="."]
 position = Vector2( 31, -4 )
