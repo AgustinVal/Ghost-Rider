@@ -8,7 +8,7 @@ resource_name = "IDLE"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -53,7 +53,6 @@ height = 8.0
 radius = 37.5899
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, 1 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
@@ -61,14 +60,19 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
+[node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="Pivot"]
 position = Vector2( 0, -4 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 hframes = 8
+
+[node name="ScareSpawn" type="Position2D" parent="Pivot"]
+position = Vector2( 31, -4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/IDLE = SubResource( 8 )
@@ -94,8 +98,5 @@ rotation = -1.58723
 enabled = true
 cast_to = Vector2( 0, 100 )
 collision_mask = 16
-
-[node name="ScareSpawn" type="Position2D" parent="."]
-position = Vector2( 31, -4 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
