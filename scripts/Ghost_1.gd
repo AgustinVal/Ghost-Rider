@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var detection_area = $DetectionArea
 onready var hurtbox=$HurtBox
 onready var ray_cast = $RayCast2D
+onready var anim_tree=$AnimationTree
 
 var velocity = Vector2()
 var SPEED = 100
@@ -12,7 +13,7 @@ var health = 100
 
 func _ready():
 	detection_area.connect("body_entered", self, "_on_body_entered")
-
+	anim_tree.active=true
 
 func _physics_process(_delta):
 	velocity = move_and_slide(velocity, Vector2.UP)

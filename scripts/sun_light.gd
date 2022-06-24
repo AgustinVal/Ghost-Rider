@@ -2,7 +2,7 @@ extends Area2D
 
 onready var animated_sprite = $AnimatedSprite
 
-export (int) var base_damage = 20
+export (float) var base_damage = 0.1
 onready var damage = base_damage
 
 export (NodePath) var lever_node
@@ -20,8 +20,10 @@ func switch(activated):
 		damage = 0
 		
 func _ready():
+	var x = damage
 	lever.connect("interaction", self, "_on_interaction")
 	switch(activated)
+	animated_sprite.set_modulate(Color(x,0.8,0.05,0.7))
 
 func get_damage():
 	return damage

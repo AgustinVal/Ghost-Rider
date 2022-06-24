@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+onready var botonE = $Interactuar
 onready var hurtbox = $Hurtbox
 onready var ray_cast = $RayCast2D
 onready var anim_tree= $AnimationTree
@@ -10,7 +10,8 @@ var linear_vel = Vector2.ZERO
 var SPEED = 350
 var health = 100
 var SoundWave = preload("res://scenes/SoundWave.tscn")
-
+var inside = false 
+var damage = 0
 	
 func _ready():
 	anim_tree.active=true
@@ -23,12 +24,21 @@ func _physics_process(_delta):
 	linear_vel.x = lerp(linear_vel.x, target_velX * SPEED, 0.5)
 	linear_vel = move_and_slide(linear_vel)
 	
-	if Input.is_action_just_pressed("interact") and ray_cast.is_colliding():
-		var collider = ray_cast.get_collider()
-		if collider.has_method("interact"):
-			collider.interact()
-			print("is activated: ",collider.is_activated())
+	if inside:
+		take_damage(damage)
 	
+	if ray_cast.is_colliding():
+		var collider = ray_cast.get_collider()
+		if collider.is_in_group("switch"):
+			botonE.visible=true
+			
+		if Input.is_action_just_pressed("interact"):
+			if collider.has_method("interact"):
+				collider.interact()
+				print("is activated: ",collider.is_activated())
+	else:
+		botonE.visible=false
+		
 	if  Input.is_action_just_pressed("Boo"):
 		Scare()
 
@@ -47,9 +57,13 @@ func get_health():
 
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("enemy") or area.is_in_group("trap"):
-		take_damage(area.get_damage())
+		damage =area.get_damage()
+		inside = true
+
+func _on_Hurtbox_area_exited(area):
+	if area.is_in_group("enemy") or area.is_in_group("trap"):
+		damage = 0
+		inside = false
 
 func game_over():
 	print("GG EZ MANCO QL, perdiste")
-	
-	

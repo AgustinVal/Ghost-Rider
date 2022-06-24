@@ -1099,6 +1099,7 @@ collision_layer = 8
 
 [node name="Sun_Light" parent="." instance=ExtResource( 14 )]
 position = Vector2( 697, 57 )
+base_damage = 0.25
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Sun_Light" instance=ExtResource( 4 )]
@@ -1106,7 +1107,7 @@ position = Vector2( -44.8333, 12.8333 )
 
 [node name="Sun_Light2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2613, 50 )
-base_damage = 40
+base_damage = 1.0
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Sun_Light2" instance=ExtResource( 4 )]

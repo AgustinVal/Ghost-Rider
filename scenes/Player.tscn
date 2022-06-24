@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://img/UI/Keys/E-Key.png" type="Texture" id=2]
 [ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=8]
@@ -52,7 +53,7 @@ height = 8.0
 [sub_resource type="CircleShape2D" id=7]
 radius = 37.5899
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 0, 1 )
 collision_layer = 2
 collision_mask = 5
@@ -98,4 +99,11 @@ collision_mask = 16
 [node name="ScareSpawn" type="Position2D" parent="."]
 position = Vector2( 31, -4 )
 
+[node name="Interactuar" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -15, -75 )
+hframes = 2
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
