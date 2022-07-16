@@ -70,4 +70,6 @@ func _on_Hurtbox_area_entered(area):
 func game_over():
 	print("GG EZ MANCO QL, perdiste")
 	
-	
+func se_asusta(instigator: Node2D):
+	var move_input_horizontal = (global_position-instigator.global_position).x
+	velocity.x = move_toward(velocity.x, move_input_horizontal * SPEED, ACCELERATION*5)
