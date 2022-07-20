@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=1]
-[ext_resource path="res://scenes/Player1.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Player1.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 29.0

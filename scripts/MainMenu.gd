@@ -14,7 +14,7 @@ func _ready():
 
 
 func _on_Play_pressed():
-	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().change_scene("res://scenes/Tutorial.tscn")
 
 
 func _on_Exit_pressed():
