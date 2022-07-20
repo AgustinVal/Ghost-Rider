@@ -328,36 +328,6 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 59.5, 226.5 )
 
-[sub_resource type="Animation" id=11]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Label:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "Show"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Label:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
@@ -478,6 +448,36 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Limites" type="RigidBody2D" parent="."]
@@ -572,36 +572,6 @@ anims/Show = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto/AreaInicio"]
 position = Vector2( -826, 372 )
-shape = SubResource( 10 )
-
-[node name="Texto2" type="Node2D" parent="."]
-position = Vector2( -364, 4 )
-z_index = -2
-script = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="Texto2"]
-margin_left = -61.0
-margin_top = 222.0
-margin_right = 274.0
-margin_bottom = 347.0
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 7 )
-text = "Las luces son la forma más útil de eliminar fantasmas, pero ten cuidado, también te pueden eliminar a ti"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texto2"]
-anims/RESET = SubResource( 11 )
-anims/Show = SubResource( 12 )
-
-[node name="AreaInicio" type="Area2D" parent="Texto2"]
-position = Vector2( 1005, 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texto2/AreaInicio"]
-position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
 [node name="Texto3" type="Node2D" parent="."]
@@ -725,5 +695,36 @@ anims/Show = SubResource( 20 )
 position = Vector2( 1005, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto6/AreaInicio"]
+position = Vector2( -900, 345 )
+shape = SubResource( 10 )
+
+[node name="Texto7" type="Node2D" parent="."]
+position = Vector2( -173, 26 )
+z_index = -2
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Texto7"]
+margin_left = -61.0
+margin_top = 222.0
+margin_right = 274.0
+margin_bottom = 347.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 7 )
+text = "Las luces son la forma más útil de eliminar fantasmas, pero ten cuidado, también te pueden eliminar a ti"
+align = 1
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texto7"]
+anims/RESET = SubResource( 21 )
+anims/Show = SubResource( 22 )
+
+[node name="AreaInicio" type="Area2D" parent="Texto7"]
+position = Vector2( 1005, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texto7/AreaInicio"]
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
