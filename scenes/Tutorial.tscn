@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
@@ -387,6 +387,96 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Limites" type="RigidBody2D" parent="."]
@@ -478,7 +568,7 @@ position = Vector2( -826, 372 )
 shape = SubResource( 10 )
 
 [node name="Texto2" type="Node2D" parent="."]
-position = Vector2( 114, 0 )
+position = Vector2( -364, 4 )
 z_index = -2
 script = ExtResource( 5 )
 
@@ -509,7 +599,7 @@ position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
 [node name="Texto3" type="Node2D" parent="."]
-position = Vector2( 1690, 4 )
+position = Vector2( 3314, 22 )
 z_index = -2
 script = ExtResource( 5 )
 
@@ -536,5 +626,98 @@ anims/Show = SubResource( 14 )
 position = Vector2( 1005, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto3/AreaInicio"]
+position = Vector2( -900, 345 )
+shape = SubResource( 10 )
+
+[node name="Texto4" type="Node2D" parent="."]
+position = Vector2( 522, 8 )
+z_index = -2
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Texto4"]
+margin_left = -61.0
+margin_top = 222.0
+margin_right = 274.0
+margin_bottom = 347.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 7 )
+text = "La cantidad de daño que puede hacer una luz depende del color de esta, luces más frias hacen más daño, mientras que luces más cálidas hacen más daño"
+align = 1
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texto4"]
+anims/RESET = SubResource( 15 )
+anims/Show = SubResource( 16 )
+
+[node name="AreaInicio" type="Area2D" parent="Texto4"]
+position = Vector2( 1005, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texto4/AreaInicio"]
+position = Vector2( -900, 345 )
+shape = SubResource( 10 )
+
+[node name="Texto5" type="Node2D" parent="."]
+position = Vector2( 1379, -3 )
+z_index = -2
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Texto5"]
+margin_left = -61.0
+margin_top = 222.0
+margin_right = 274.0
+margin_bottom = 347.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 7 )
+text = "Puedes activar luces usando los interruptores reaprtidos por el mapa, que se activan usando la tecla E"
+align = 1
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texto5"]
+anims/RESET = SubResource( 17 )
+anims/Show = SubResource( 18 )
+
+[node name="AreaInicio" type="Area2D" parent="Texto5"]
+position = Vector2( 1005, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texto5/AreaInicio"]
+position = Vector2( -900, 345 )
+shape = SubResource( 10 )
+
+[node name="Texto6" type="Node2D" parent="."]
+position = Vector2( 5332, 85 )
+z_index = -2
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Texto6"]
+margin_left = -60.0
+margin_top = 222.0
+margin_right = 275.0
+margin_bottom = 379.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 7 )
+text = "Buena Suerte!"
+align = 1
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texto6"]
+anims/RESET = SubResource( 19 )
+anims/Show = SubResource( 20 )
+
+[node name="AreaInicio" type="Area2D" parent="Texto6"]
+position = Vector2( 1005, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texto6/AreaInicio"]
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
