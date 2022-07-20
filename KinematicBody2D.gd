@@ -18,6 +18,7 @@ var SoundWave = preload("res://scenes/SoundWave.tscn")
 func _ready():
 	anim_tree.active=true
 	detection_area.connect("body_entered",self, "_on_body_entered")
+	detection_area.connect("body_exited",self, "_on_body_exited")
 	Scare_area.connect("body_entered",self, "_on_body_entered2")
 	Scare_area.connect("body_exited",self, "_on_body_exited2")
 
@@ -33,8 +34,8 @@ func _physics_process(delta):
 		pivot.scale.x = 1
 	if move_input_x<0 and not move_input_x>0:
 		pivot.scale.x = -1
-	velocity.x = move_toward(velocity.x,move_input_x*speed,acceleration)	
-	velocity.y = move_toward(velocity.y,move_input_y*speed,acceleration)
+	velocity.x = move_toward(velocity.x,move_input_x*speed*2,acceleration)	
+	velocity.y = move_toward(velocity.y,move_input_y*speed*2,acceleration)
 
 func Scare():
 	var wave =SoundWave.instance()
@@ -50,6 +51,8 @@ func se_asusta(instigator: Node2D):
 	
 func _on_body_entered(body:Node2D):
 	_target = body
+func _on_body_exited(body:Node2D):
+	_target = null
 
 func _on_body_entered2(body:Node2D):
 	_target2 = body	

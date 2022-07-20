@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resourses/m5x7.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scenes/TextoAnimado.gd" type="Script" id=5]
 [ext_resource path="res://Musica/Retro Gap loop.wav" type="AudioStream" id=6]
+[ext_resource path="res://scenes/EnemyTesting.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3482.5, 22.75 )
@@ -728,3 +729,7 @@ position = Vector2( 1005, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto7/AreaInicio"]
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
+
+[node name="Enemy Testing" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3751, 353 )
+scale = Vector2( 8, 8 )

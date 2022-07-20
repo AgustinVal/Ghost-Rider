@@ -72,4 +72,4 @@ func game_over():
 	
 func se_asusta(instigator: Node2D):
 	var move_input_horizontal = (global_position-instigator.global_position).x
-	velocity.x = move_toward(velocity.x, move_input_horizontal * SPEED, ACCELERATION*5)
+	velocity.x = move_toward(velocity.x, move_input_horizontal * SPEED, ACCELERATION*15)
