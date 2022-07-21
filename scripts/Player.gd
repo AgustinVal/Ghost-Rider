@@ -49,12 +49,14 @@ func _physics_process(_delta):
 				print("is activated: ",collider.is_activated())
 	else:
 		interaction.visible = false	
-		
+	if abs(velocity.x)>=0:
+		playback.travel("IDLE")
 	if Input.is_action_pressed("right") and not Input.is_action_just_pressed("left"):
 		pivot.scale.x = 1
 	if Input.is_action_pressed("left") and not Input.is_action_just_pressed("right"):
 		pivot.scale.x = -1
 	if Input.is_action_just_pressed("Boo"):
+		playback.travel("Asustar")
 		Scare()
 
 func Scare():

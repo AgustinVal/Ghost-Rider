@@ -1,10 +1,66 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/pause_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://img/Gerald's Keys (1)/Keys/E-Key.png" type="Texture" id=3]
 [ext_resource path="res://scenes/pantalla_de_muerte.tscn" type="PackedScene" id=4]
+[ext_resource path="res://img/Player/Prota_Scare.png" type="Texture" id=5]
 [ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Asustar"
+length = 0.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Scare"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "IDLE"
@@ -17,10 +73,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+"values": [ 0, 1, 2, 0, 0, 1, 2, 3, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -37,14 +117,50 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Asustar"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "IDLE"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id=10]
+states/Asustar/node = SubResource( 14 )
+states/Asustar/position = Vector2( 490.651, 60 )
 states/IDLE/node = SubResource( 12 )
 states/IDLE/position = Vector2( 210, 60 )
+transitions = [ "IDLE", "Asustar", SubResource( 15 ), "Asustar", "IDLE", SubResource( 16 ) ]
 start_node = "IDLE"
+graph_offset = Vector2( -98.349, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
@@ -69,8 +185,8 @@ show_behind_parent = true
 [node name="Sprite" type="Sprite" parent="Pivot"]
 position = Vector2( 0, -4 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
-hframes = 8
+texture = ExtResource( 5 )
+hframes = 5
 
 [node name="ScareSpawn" type="Position2D" parent="Pivot"]
 position = Vector2( 59, -4 )
@@ -79,6 +195,7 @@ position = Vector2( 59, -4 )
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Asustar = SubResource( 13 )
 anims/IDLE = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 
