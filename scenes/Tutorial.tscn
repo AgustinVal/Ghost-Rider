@@ -1,12 +1,15 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
 [ext_resource path="res://resourses/theme.tres" type="Theme" id=3]
 [ext_resource path="res://resourses/m5x7.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scenes/TextoAnimado.gd" type="Script" id=5]
+[ext_resource path="res://scripts/TextoAnimado.gd" type="Script" id=5]
 [ext_resource path="res://Musica/Retro Gap loop.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/EnemyTesting.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/HealthBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/sun_light.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Lever.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3482.5, 22.75 )
@@ -530,14 +533,8 @@ collision_mask = 7
 format = 1
 tile_data = PoolIntArray( 1048554, 0, 0, 1048557, 0, 0, 1048560, 0, 0, 1048563, 0, 0, 1048565, 0, 0, 1048567, 0, 0, 1048570, 0, 0, 1048573, 0, 0, 1048575, 0, 0, 983042, 0, 0, 983044, 0, 0, 983046, 0, 0, 983049, 0, 0, 983052, 0, 0, 983055, 0, 0, 983058, 0, 0, 983061, 0, 0, 983063, 0, 0, 983064, 0, 0, 983066, 0, 0, 983068, 0, 0, 983071, 0, 0, 983073, 0, 0, 983075, 0, 0, 983077, 0, 0, 983080, 0, 0, 983081, 0, 0, 983083, 0, 0, 983085, 0, 0, 983087, 0, 0, 983089, 0, 0, 983092, 0, 0, 983095, 0, 0, 983096, 0, 0, 983099, 0, 0, 983100, 0, 0, 983103, 0, 0, 983106, 0, 0, 983107, 0, 0, 983110, 0, 0, 983111, 0, 0, 983114, 0, 0, 983117, 0, 0, 983120, 0, 0, 983121, 0, 0, 983123, 0, 0, 983125, 0, 0, 983126, 0, 0, 983128, 0, 0, 983130, 0, 0, 983132, 0, 0, 983134, 0, 0, 983137, 0, 0, 983139, 0, 0, 983141, 0, 0, 983144, 0, 0, 983148, 0, 0, 983150, 0, 0, 983152, 0, 0, 983154, 0, 0, 983157, 0, 0, 983160, 0, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -826, 385 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2( 826, -385 )
-stream = ExtResource( 6 )
-pitch_scale = 0.75
-autoplay = true
+[node name="HealthBar" parent="." instance=ExtResource( 8 )]
+player_node = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
@@ -575,6 +572,13 @@ anims/Show = SubResource( 9 )
 position = Vector2( -826, 372 )
 shape = SubResource( 10 )
 
+[node name="Sun_Light" parent="." instance=ExtResource( 9 )]
+position = Vector2( 201, 321 )
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light" instance=ExtResource( 10 )]
+position = Vector2( -14.6667, 142.667 )
+
 [node name="Texto3" type="Node2D" parent="."]
 position = Vector2( 3314, 22 )
 z_index = -2
@@ -606,6 +610,22 @@ position = Vector2( 1005, 1 )
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
+[node name="Sun_Light2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 862, 332 )
+base_damage = 0.1
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light2" instance=ExtResource( 10 )]
+position = Vector2( 1.5, 142 )
+
+[node name="Sun_Light3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1102, 332 )
+base_damage = 2.0
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light3" instance=ExtResource( 10 )]
+position = Vector2( -14.6667, 142.667 )
+
 [node name="Texto4" type="Node2D" parent="."]
 position = Vector2( 522, 8 )
 z_index = -2
@@ -636,6 +656,13 @@ position = Vector2( 1005, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto4/AreaInicio"]
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
+
+[node name="Sun_Light4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1850, 384 )
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light4" instance=ExtResource( 10 )]
+position = Vector2( -38.6666, 32 )
 
 [node name="Texto5" type="Node2D" parent="."]
 position = Vector2( 1379, -3 )
@@ -733,3 +760,12 @@ shape = SubResource( 10 )
 [node name="Enemy Testing" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3751, 353 )
 scale = Vector2( 8, 8 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -826, 385 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( 826, -385 )
+stream = ExtResource( 6 )
+pitch_scale = 0.75
+autoplay = true

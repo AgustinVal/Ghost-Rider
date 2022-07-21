@@ -3,12 +3,12 @@
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://img/Enemy/Enemy IDLE.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 14.5, 5 )
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0
 height = 4.0
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 14.5, 5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "IDLE"
@@ -55,10 +55,20 @@ start_node = "IDLE"
 [sub_resource type="CircleShape2D" id=7]
 radius = 42.0
 
-[node name="Enemy Testing" type="KinematicBody2D"]
+[node name="Enemy Testing" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 9
 script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 1 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -72,13 +82,12 @@ position = Vector2( 6, -1 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="ScareArea" type="Area2D" parent="Pivot"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/ScareArea"]
 position = Vector2( 18, 0 )
 shape = SubResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -91,7 +100,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 6 )
 
 [node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 2
+visible = false
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
@@ -100,4 +110,7 @@ shape = SubResource( 7 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_HurtBox_area_exited"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_DetectionArea_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

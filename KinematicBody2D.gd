@@ -11,6 +11,9 @@ var acceleration= 200
 var _target: Node2D=null
 var _target2: Node2D=null
 var velocity=Vector2()
+var health = 100
+var insideTrap=false
+var damage=0
 
 export var scaring = false
 var SoundWave = preload("res://scenes/SoundWave.tscn")
@@ -36,7 +39,9 @@ func _physics_process(delta):
 		pivot.scale.x = -1
 	velocity.x = move_toward(velocity.x,move_input_x*speed*2,acceleration)	
 	velocity.y = move_toward(velocity.y,move_input_y*speed*2,acceleration)
-
+	if insideTrap:
+		take_damage(damage)
+		
 func Scare():
 	var wave =SoundWave.instance()
 	get_parent().add_child(wave)
@@ -50,16 +55,40 @@ func se_asusta(instigator: Node2D):
 	
 	
 func _on_body_entered(body:Node2D):
-	_target = body
+	if body.is_in_group("player"):
+		_target = body
 func _on_body_exited(body:Node2D):
-	_target = null
+	if body.is_in_group("player"):
+		_target = null
 
 func _on_body_entered2(body:Node2D):
-	_target2 = body	
-	
+	_target2 = body
 func _on_body_exited2(body:Node2D):
 	_target2 = null
 	
 func _on_Timer_timeout():
 	if _target2 != null:
 		Scare()
+
+func get_health():
+	return health
+	
+func take_damage(damage):
+	health -= damage
+	print(get_health())
+	if health<=0:
+		die()
+			
+func die():
+	queue_free()
+	print("*c muere*")
+
+func _on_HurtBox_area_entered(area):
+	if area.is_in_group("trap"):
+		damage=area.get_damage()
+		insideTrap = true
+
+func _on_HurtBox_area_exited(area):
+	if area.is_in_group("trap"):
+		damage=0
+		insideTrap = false

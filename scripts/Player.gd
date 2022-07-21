@@ -5,12 +5,15 @@ onready var ray_cast = $RayCast2D
 onready var anim_tree= $AnimationTree
 onready var scare_spawn = $Pivot/ScareSpawn
 onready var pivot = $Pivot
+onready var interaction = $Interaccion
 onready var playback = anim_tree.get("parameters/playback")
 var velocity = Vector2()
 var linear_vel = Vector2.ZERO 
 var SPEED = 350
 var ACCELERATION =100
 var health = 100
+var insideArea = false
+var damage = 0
 
 export var scaring = false
 var SoundWave = preload("res://scenes/SoundWave.tscn")
@@ -19,6 +22,7 @@ var SoundWave = preload("res://scenes/SoundWave.tscn")
 func _ready():
 	scaring = false
 	anim_tree.active=true
+	interaction.visible=false
 
 
 func _physics_process(_delta):
@@ -33,19 +37,24 @@ func _physics_process(_delta):
 		move_input_vertical = 0 
 		move_input_horizontal = 0
 	
-	if Input.is_action_just_pressed("interact") and ray_cast.is_colliding():
+	if insideArea:
+		take_damage(damage)
+		
+	if ray_cast.is_colliding():
+		interaction.visible = true	
 		var collider = ray_cast.get_collider()
-		if collider.has_method("interact"):
-			collider.interact()
-			print("is activated: ",collider.is_activated())
-	
+		if Input.is_action_just_pressed("interact"):
+			if collider.has_method("interact"):
+				collider.interact()
+				print("is activated: ",collider.is_activated())
+	else:
+		interaction.visible = false	
+		
 	if Input.is_action_pressed("right") and not Input.is_action_just_pressed("left"):
 		pivot.scale.x = 1
 	if Input.is_action_pressed("left") and not Input.is_action_just_pressed("right"):
 		pivot.scale.x = -1
-	
-	
-	if  Input.is_action_just_pressed("Boo"):
+	if Input.is_action_just_pressed("Boo"):
 		Scare()
 
 func Scare():
@@ -65,11 +74,17 @@ func get_health():
 
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("enemy") or area.is_in_group("trap"):
-		take_damage(area.get_damage())
+		damage = area.get_damage()
+		insideArea = true
 
+func _on_Hurtbox_area_exited(area):
+	if area.is_in_group("enemy") or area.is_in_group("trap"):
+		insideArea = false
+		
 func game_over():
 	print("GG EZ MANCO QL, perdiste")
 	
 func se_asusta(instigator: Node2D):
 	var move_input_horizontal = (global_position-instigator.global_position).x
 	velocity.x = move_toward(velocity.x, move_input_horizontal * SPEED, ACCELERATION*15)
+

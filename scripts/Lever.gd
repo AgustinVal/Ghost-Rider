@@ -6,6 +6,7 @@ export var activated = false
 
 signal interaction
 
+	
 func interact():
 	activated = not activated
 	emit_signal("interaction")
@@ -17,5 +18,3 @@ func interact():
 
 func is_activated():
 	return activated
-
-

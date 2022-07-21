@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/pause_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://img/Gerald's Keys (1)/Keys/E-Key.png" type="Texture" id=3]
+[ext_resource path="res://scenes/pantalla_de_muerte.tscn" type="PackedScene" id=4]
 [ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=8]
@@ -52,7 +55,7 @@ height = 8.0
 [sub_resource type="CircleShape2D" id=7]
 radius = 37.5899
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
@@ -100,4 +103,17 @@ enabled = true
 cast_to = Vector2( 0, 100 )
 collision_mask = 16
 
+[node name="Interaccion" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -65 )
+hframes = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Pantalla de muerte" parent="CanvasLayer" instance=ExtResource( 4 )]
+player_node = NodePath("../..")
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
