@@ -57,7 +57,6 @@ func _physics_process(_delta):
 		pivot.scale.x = -1
 	if Input.is_action_just_pressed("Boo"):
 		playback.travel("Asustar")
-		Scare()
 
 func Scare():
 	var wave =SoundWave.instance()
