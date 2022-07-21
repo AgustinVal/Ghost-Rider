@@ -14,7 +14,6 @@ var acceleration= 200
 var _target: Node2D=null
 var _target2: Node2D=null
 var velocity=Vector2()
-var health = 100
 var insideTrap=false
 var damage=0
 
