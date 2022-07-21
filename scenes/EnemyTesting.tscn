@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://img/Enemy/Enemy IDLE.png" type="Texture" id=2]
@@ -55,6 +55,9 @@ start_node = "IDLE"
 [sub_resource type="CircleShape2D" id=7]
 radius = 42.0
 
+[sub_resource type="CircleShape2D" id=9]
+radius = 42.0119
+
 [node name="Enemy Testing" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -100,4 +103,15 @@ shape = SubResource( 7 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource( 9 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

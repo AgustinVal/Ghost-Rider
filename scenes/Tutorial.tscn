@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://scenes/TextoAnimado.gd" type="Script" id=5]
 [ext_resource path="res://Musica/Retro Gap loop.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/EnemyTesting.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/HealthBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Lever.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/sun_light.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3482.5, 22.75 )
@@ -730,6 +733,24 @@ position = Vector2( 1005, 1 )
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
+[node name="HealthBar" parent="." instance=ExtResource( 8 )]
+player_node = NodePath("../Player")
+
 [node name="Enemy Testing" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3751, 353 )
 scale = Vector2( 8, 8 )
+
+[node name="Sun_Light" parent="." instance=ExtResource( 10 )]
+position = Vector2( 354, 327 )
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( -44.8333, 12.8333 )
+
+[node name="Sun_Light2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1949, 329 )
+lever_node = NodePath("Lever")
+
+[node name="Lever" parent="Sun_Light2" instance=ExtResource( 9 )]
+position = Vector2( -44.8333, 12.8333 )

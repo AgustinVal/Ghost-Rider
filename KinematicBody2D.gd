@@ -6,6 +6,9 @@ onready var detection_area = $DetectionArea
 onready var Scare_area= $Pivot/ScareArea
 onready var scare_spawn = $Pivot/ScareSpawn
 onready var pivot = $Pivot
+onready var hurtbox=$HurtBox
+onready var ray_cast = $RayCast2D
+var health = 100
 var speed =100
 var acceleration= 200
 var _target: Node2D=null
@@ -63,3 +66,21 @@ func _on_body_exited2(body:Node2D):
 func _on_Timer_timeout():
 	if _target2 != null:
 		Scare()
+
+
+func take_damage(damage):
+	health -= damage
+	print(get_health())
+	if health<=0:
+		die()
+
+func get_health():
+	return health
+
+func die():
+	queue_free()
+	print("*c muere*")
+
+func _on_Hurtbox_area_entered(area):
+	if area.is_in_group("trap"):
+		take_damage(area.get_damage())
