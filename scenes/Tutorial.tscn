@@ -757,6 +757,9 @@ position = Vector2( 1005, 1 )
 position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
+[node name="HealthBar" parent="." instance=ExtResource( 8 )]
+player_node = NodePath("../Player")
+
 [node name="Enemy Testing" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3751, 353 )
 scale = Vector2( 8, 8 )

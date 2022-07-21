@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://img/Enemy/Enemy IDLE.png" type="Texture" id=2]
@@ -114,3 +114,4 @@ autostart = true
 [connection signal="area_exited" from="HurtBox" to="." method="_on_HurtBox_area_exited"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_DetectionArea_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
