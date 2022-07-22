@@ -36,7 +36,7 @@ func _physics_process(delta):
 		move_input_y = (_target.global_position - global_position).normalized().y
 	
 	if abs(velocity.x)>=0:
-		playback.travel("Asustar")
+		playback.travel("IDLE")
 	
 	if move_input_x>0 and not move_input_x<0:
 		pivot.scale.x = 1

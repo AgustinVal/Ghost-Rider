@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/pause_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://img/Gerald's Keys (1)/Keys/E-Key.png" type="Texture" id=3]
 [ext_resource path="res://scenes/pantalla_de_muerte.tscn" type="PackedScene" id=4]
 [ext_resource path="res://img/Player/Prota_Scare.png" type="Texture" id=5]
+[ext_resource path="res://img/Player/Prota_Damage.png" type="Texture" id=6]
 [ext_resource path="res://img/Player/Prota_IDLE (1).png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=13]
@@ -60,6 +61,46 @@ tracks/3/keys = {
 "args": [  ],
 "method": "Scare"
 } ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Herido"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -145,6 +186,9 @@ tracks/2/keys = {
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Asustar"
 
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Herido"
+
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "IDLE"
 
@@ -153,12 +197,22 @@ animation = "IDLE"
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
 [sub_resource type="AnimationNodeStateMachine" id=10]
 states/Asustar/node = SubResource( 14 )
 states/Asustar/position = Vector2( 490.651, 60 )
+states/Herido/node = SubResource( 18 )
+states/Herido/position = Vector2( 339.651, 167 )
 states/IDLE/node = SubResource( 12 )
 states/IDLE/position = Vector2( 210, 60 )
-transitions = [ "IDLE", "Asustar", SubResource( 15 ), "Asustar", "IDLE", SubResource( 16 ) ]
+transitions = [ "IDLE", "Asustar", SubResource( 15 ), "Asustar", "IDLE", SubResource( 16 ), "IDLE", "Herido", SubResource( 19 ), "Herido", "IDLE", SubResource( 20 ), "Asustar", "Herido", SubResource( 21 ), "Herido", "Asustar", SubResource( 22 ) ]
 start_node = "IDLE"
 graph_offset = Vector2( -98.349, 0 )
 
@@ -196,6 +250,7 @@ current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Asustar = SubResource( 13 )
+anims/Herido = SubResource( 17 )
 anims/IDLE = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 

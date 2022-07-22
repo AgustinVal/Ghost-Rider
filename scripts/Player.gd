@@ -38,6 +38,7 @@ func _physics_process(_delta):
 		move_input_horizontal = 0
 	
 	if insideArea:
+		playback.travel("Herido")
 		take_damage(damage)
 		
 	if ray_cast.is_colliding():
