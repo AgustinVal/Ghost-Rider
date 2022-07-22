@@ -46,14 +46,16 @@ func _physics_process(delta):
 	velocity.y = move_toward(velocity.y,move_input_y*speed*2,acceleration)
 	if insideTrap:
 		take_damage(damage)
-		
+	if _target2:
+		playback.travel("Asustar")
 func Scare():
 	var wave =SoundWave.instance()
 	get_parent().add_child(wave)
 	wave.global_position = scare_spawn.global_position
 	if pivot.scale.x < 0:
 		wave.rotation = PI
-	$Timer.set_wait_time(1)	
+	
+	#$Timer.set_wait_time(1)	
 	
 func se_asusta(instigator: Node2D):
 	velocity = (global_position-instigator.global_position)* 0.5* speed
@@ -67,13 +69,17 @@ func _on_body_exited(body:Node2D):
 		_target = null
 
 func _on_body_entered2(body:Node2D):
-	_target2 = body
+	if body.is_in_group("player"):
+		_target2 = body
+		
 func _on_body_exited2(body:Node2D):
-	_target2 = null
+	if body.is_in_group("player"):
+		_target2 = null
 	
-func _on_Timer_timeout():
-	if _target2 != null:
-		Scare()
+#func _on_Timer_timeout():
+#	if _target2:
+#		playback.travel("Asustar")
+
 
 func get_health():
 	return health

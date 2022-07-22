@@ -638,7 +638,7 @@ margin_right = 274.0
 margin_bottom = 347.0
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 7 )
-text = "La cantidad de daño que puede hacer una luz depende del color de esta, luces más frias hacen más daño, mientras que luces más cálidas hacen más daño"
+text = "La cantidad de daño que puede hacer una luz depende del color de esta, luces más frias hacen más daño, mientras que luces más cálidas hacen menos  daño"
 align = 1
 autowrap = true
 percent_visible = 0.0
@@ -696,7 +696,7 @@ position = Vector2( -900, 345 )
 shape = SubResource( 10 )
 
 [node name="Texto6" type="Node2D" parent="."]
-position = Vector2( 5332, 85 )
+position = Vector2( 4826, 55 )
 z_index = -2
 script = ExtResource( 5 )
 
@@ -723,7 +723,7 @@ anims/Show = SubResource( 20 )
 position = Vector2( 1005, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texto6/AreaInicio"]
-position = Vector2( -900, 345 )
+position = Vector2( -930, 337 )
 shape = SubResource( 10 )
 
 [node name="Texto7" type="Node2D" parent="."]
@@ -761,7 +761,7 @@ shape = SubResource( 10 )
 player_node = NodePath("../Player")
 
 [node name="Enemy Testing" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3751, 353 )
+position = Vector2( 4155, 361 )
 scale = Vector2( 8, 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

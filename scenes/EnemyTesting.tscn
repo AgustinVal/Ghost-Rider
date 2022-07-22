@@ -13,41 +13,43 @@ extents = Vector2( 14.5, 5 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "Asustar"
+length = 0.6
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/path = NodePath("Pivot/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.0514591 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1, 0, 2, 1, 0 ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/Sprite:texture")
+tracks/1/path = NodePath("Pivot/Sprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.7 ),
+"times": PoolRealArray( 0.0514591 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ 3 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pivot/Sprite:hframes")
+tracks/2/path = NodePath("Pivot/Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.0514591, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 0, 1, 2 ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -56,7 +58,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -189,7 +191,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="ScareSpawn" type="Position2D" parent="Pivot"]
 position = Vector2( 6, -1 )
@@ -215,7 +217,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 6 )
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
