@@ -18,6 +18,9 @@ var damage = 0
 export var scaring = false
 var SoundWave = preload("res://scenes/SoundWave.tscn")
 
+export var scaring = false
+var SoundWave = preload("res://scenes/SoundWave.tscn")
+
 	
 func _ready():
 	scaring = false
@@ -58,6 +61,22 @@ func _physics_process(_delta):
 		pivot.scale.x = -1
 	if Input.is_action_just_pressed("Boo"):
 		playback.travel("Asustar")
+
+func Scare():
+	var wave =SoundWave.instance()
+	get_parent().add_child(wave)
+	wave.global_position = scare_spawn.global_position
+	if pivot.scale.x < 0:
+		wave.rotation = PI
+	
+	if Input.is_action_pressed("right") and not Input.is_action_just_pressed("left"):
+		pivot.scale.x = 1
+	if Input.is_action_pressed("left") and not Input.is_action_just_pressed("right"):
+		pivot.scale.x = -1
+	
+	
+	if  Input.is_action_just_pressed("Boo"):
+		Scare()
 
 func Scare():
 	var wave =SoundWave.instance()
