@@ -18,8 +18,6 @@ var damage = 0
 export var scaring = false
 var SoundWave = preload("res://scenes/SoundWave.tscn")
 
-export var scaring = false
-var SoundWave = preload("res://scenes/SoundWave.tscn")
 
 	
 func _ready():
@@ -50,7 +48,8 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("interact"):
 			if collider.has_method("interact"):
 				collider.interact()
-				print("is activated: ",collider.is_activated())
+				if collider.has_method("is_activated"):
+					print("is activated: ",collider.is_activated())
 	else:
 		interaction.visible = false	
 	if abs(velocity.x)>=0:
@@ -78,12 +77,12 @@ func Scare():
 	if  Input.is_action_just_pressed("Boo"):
 		Scare()
 
-func Scare():
-	var wave =SoundWave.instance()
-	get_parent().add_child(wave)
-	wave.global_position = scare_spawn.global_position
-	if pivot.scale.x < 0:
-		wave.rotation = PI
+#func Scare():
+#	var wave =SoundWave.instance()
+#	get_parent().add_child(wave)
+#	wave.global_position = scare_spawn.global_position
+#	if pivot.scale.x < 0:
+#		wave.rotation = PI
 	
 func take_damage(damage):
 	health -= damage

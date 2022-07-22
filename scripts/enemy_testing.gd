@@ -20,9 +20,6 @@ var damage=0
 export var scaring = false
 var SoundWave = preload("res://scenes/SoundWave.tscn")
 
-export var scaring = false
-var SoundWave = preload("res://scenes/SoundWave.tscn")
-
 func _ready():
 	anim_tree.active=true
 	detection_area.connect("body_entered",self, "_on_body_entered")

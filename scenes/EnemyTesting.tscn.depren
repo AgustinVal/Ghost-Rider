@@ -1,8 +1,12 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://scripts/enemy_testing.gd" type="Script" id=1]
+[ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://img/Enemy/Enemy IDLE.png" type="Texture" id=2]
 [ext_resource path="res://img/Enemy/Enemy Scream.png" type="Texture" id=3]
+
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 14.5, 5 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0

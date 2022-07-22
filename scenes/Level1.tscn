@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://img/Objetos/20bb20e8fae252f4d4e308a5cee44a3d.png" type="Texture" id=10]
 [ext_resource path="res://img/Objetos/vx-interior-tileset1.png" type="Texture" id=11]
 [ext_resource path="res://img/Objetos/3336fb7f3914f850ccd2c8728d104757.png" type="Texture" id=12]
+[ext_resource path="res://scenes/HealthBar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scripts/puerta1.gd" type="Script" id=14]
+[ext_resource path="res://Musica/Retro Gap loop.wav" type="AudioStream" id=15]
+[ext_resource path="res://img/Objetos/Puerta.png" type="Texture" id=16]
+[ext_resource path="res://scenes/EnemyTesting.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3482.5, 22.75 )
@@ -2018,6 +2023,9 @@ extents = Vector2( 26.5, 407.75 )
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 52.5, 95.25 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Limites" type="RigidBody2D" parent="."]
@@ -2115,8 +2123,8 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 262133, 0, 0, 196627, 0, 0, 196667, 0, 0, 196705, 0, 0, 196715, 0, 0, 196729, 0, 0, 327669, 0, 0, 327675, 1, 0, 262163, 0, 0, 262173, 1, 0, 262197, 1, 0, 262203, 0, 0, 262205, 2, 0, 262228, 1, 0, 262241, 0, 0, 262244, 1, 0, 262249, 2, 0, 262251, 0, 0, 262265, 0, 0, 393205, 0, 0, 327695, 2, 0, 327699, 0, 0, 327739, 0, 0, 327777, 0, 0, 327787, 0, 0, 327801, 0, 0, 458741, 0, 0, 393235, 0, 0, 393275, 0, 0, 393313, 0, 0, 393323, 0, 0, 393337, 0, 0, 524277, 0, 0, 458771, 0, 0, 458811, 0, 0, 458849, 0, 0, 458859, 0, 0, 458873, 0, 0, 589813, 0, 0, 524307, 0, 0, 524347, 0, 0, 524385, 0, 0, 524395, 0, 0, 524409, 0, 0, 655349, 0, 0, 589843, 0, 0, 589883, 0, 0, 589921, 0, 0, 589931, 0, 0, 589945, 0, 0, 720885, 0, 0, 655366, 2, 0, 655379, 0, 0, 655419, 0, 0, 655426, 2, 0, 655457, 0, 0, 655467, 0, 0, 655481, 0, 0, 786421, 0, 0, 720915, 0, 0, 720955, 0, 0, 720993, 0, 0, 721003, 0, 0, 721017, 0, 0, 851957, 0, 0, 786451, 0, 0, 786491, 0, 0, 786529, 0, 0, 786539, 0, 0, 786553, 0, 0, 917493, 0, 0, 851987, 0, 0, 852027, 0, 0, 852065, 0, 0, 852075, 0, 0, 852089, 0, 0, 983029, 0, 0, 917523, 0, 0, 917563, 0, 0, 917601, 0, 0, 917611, 0, 0, 917625, 0, 0, 1048565, 0, 0, 983059, 0, 0, 983099, 0, 0, 983137, 0, 0, 983147, 0, 0, 983161, 0, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -836, 450 )
+[node name="HealthBar" parent="." instance=ExtResource( 13 )]
+player_node = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
@@ -2262,6 +2270,7 @@ position = Vector2( 65.75, 10.6667 )
 [node name="Luz15" parent="." instance=ExtResource( 8 )]
 position = Vector2( 5665, 629 )
 scale = Vector2( 2, 3 )
+base_damage = 0.8
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Luz15" instance=ExtResource( 7 )]
@@ -2281,6 +2290,7 @@ position = Vector2( -12.5, -194 )
 visible = false
 position = Vector2( -139, 393 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven1-2" instance=ExtResource( 7 )]
@@ -2290,6 +2300,7 @@ position = Vector2( 3, -225 )
 visible = false
 position = Vector2( -142, 472 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven1-3" instance=ExtResource( 7 )]
@@ -2299,6 +2310,7 @@ position = Vector2( 16.2, -253.667 )
 visible = false
 position = Vector2( 2639, 311 )
 scale = Vector2( 4, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven2-1" instance=ExtResource( 7 )]
@@ -2308,6 +2320,7 @@ position = Vector2( -12.5, -194 )
 visible = false
 position = Vector2( 2639, 392 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven2-2" instance=ExtResource( 7 )]
@@ -2317,6 +2330,7 @@ position = Vector2( 16.2, -253.667 )
 visible = false
 position = Vector2( 2641, 466 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven2-3" instance=ExtResource( 7 )]
@@ -2326,6 +2340,7 @@ position = Vector2( 16.2, -253.667 )
 visible = false
 position = Vector2( 4128, 313 )
 scale = Vector2( 4, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven3-1" instance=ExtResource( 7 )]
@@ -2335,6 +2350,7 @@ position = Vector2( -17.25, -269.333 )
 visible = false
 position = Vector2( 4129, 392 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven3-2" instance=ExtResource( 7 )]
@@ -2344,6 +2360,7 @@ position = Vector2( 0.800232, -295.667 )
 visible = false
 position = Vector2( 4128, 470 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven3-3" instance=ExtResource( 7 )]
@@ -2353,6 +2370,7 @@ position = Vector2( 19.6001, -321 )
 visible = false
 position = Vector2( 4900, 308 )
 scale = Vector2( 4, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven4-1" instance=ExtResource( 7 )]
@@ -2362,6 +2380,7 @@ position = Vector2( -39, -291.333 )
 visible = false
 position = Vector2( 4898, 386 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven4-2" instance=ExtResource( 7 )]
@@ -2371,7 +2390,64 @@ position = Vector2( -15.9999, -314.333 )
 visible = false
 position = Vector2( 4897, 464 )
 scale = Vector2( 5, 3 )
+base_damage = 0.75
 lever_node = NodePath("Lever")
 
 [node name="Lever" parent="Ven4-3" instance=ExtResource( 7 )]
 position = Vector2( -0.200012, -339.667 )
+
+[node name="puerta" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puerta"]
+position = Vector2( 5830, 618 )
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="puerta"]
+position = Vector2( 5827, 618 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 16 )
+
+[node name="Enemy Testing" parent="." instance=ExtResource( 17 )]
+position = Vector2( -24, 332 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 430, 652 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing3" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1504, 414 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing4" parent="." instance=ExtResource( 17 )]
+position = Vector2( 2781, 413 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing5" parent="." instance=ExtResource( 17 )]
+position = Vector2( 2907, 195 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing6" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3721, 232 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing8" parent="." instance=ExtResource( 17 )]
+position = Vector2( 5577, 401 )
+scale = Vector2( 8, 8 )
+
+[node name="Enemy Testing7" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3719, 645 )
+scale = Vector2( 8, 8 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -836, 450 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 15 )
+volume_db = -10.0
+pitch_scale = 0.75
+autoplay = true
+mix_target = 2
