@@ -102,7 +102,7 @@ func _on_Hurtbox_area_exited(area):
 		insideArea = false
 		
 func game_over():
-	print("GG EZ MANCO QL, perdiste")
+	print("GG EZ, perdiste")
 	
 func se_asusta(instigator: Node2D):
 	var move_input_horizontal = (global_position-instigator.global_position).x
