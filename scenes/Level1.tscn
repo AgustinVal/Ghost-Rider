@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/Fondos/Assets.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://img/Objetos/gallery_501_69_115026.png" type="Texture" id=9]
 [ext_resource path="res://img/Objetos/20bb20e8fae252f4d4e308a5cee44a3d.png" type="Texture" id=10]
 [ext_resource path="res://img/Objetos/vx-interior-tileset1.png" type="Texture" id=11]
+[ext_resource path="res://img/Objetos/3336fb7f3914f850ccd2c8728d104757.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3482.5, 22.75 )
@@ -1826,6 +1827,104 @@ extents = Vector2( 26.5, 407.75 )
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
+7/name = "3336fb7f3914f850ccd2c8728d104757.png 7"
+7/texture = ExtResource( 12 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 32, 160, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "3336fb7f3914f850ccd2c8728d104757.png 8"
+8/texture = ExtResource( 12 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 64, 160, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "3336fb7f3914f850ccd2c8728d104757.png 9"
+9/texture = ExtResource( 12 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 160, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "3336fb7f3914f850ccd2c8728d104757.png 10"
+10/texture = ExtResource( 12 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 33, 200, 5, 0 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "3336fb7f3914f850ccd2c8728d104757.png 11"
+11/texture = ExtResource( 12 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 25, 171, 33, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "3336fb7f3914f850ccd2c8728d104757.png 12"
+12/texture = ExtResource( 12 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 288, 10, 48, 134 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "3336fb7f3914f850ccd2c8728d104757.png 13"
+13/texture = ExtResource( 12 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 150, 295, 38, 75 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
 
 [sub_resource type="TileSet" id=2]
 0/name = "Assets.png 0"
@@ -1977,6 +2076,26 @@ collision_layer = 7
 collision_mask = 7
 format = 1
 tile_data = PoolIntArray( 1048554, 0, 0, 1048557, 0, 0, 1048560, 0, 0, 1048563, 0, 0, 1048565, 0, 0, 1048567, 0, 0, 1048570, 0, 0, 1048573, 0, 0, 1048575, 0, 0, 983042, 0, 0, 983044, 0, 0, 983046, 0, 0, 983049, 0, 0, 983052, 0, 0, 983055, 0, 0, 983058, 0, 0, 983061, 0, 0, 983063, 0, 0, 983064, 0, 0, 983066, 0, 0, 983068, 0, 0, 983071, 0, 0, 983073, 0, 0, 983075, 0, 0, 983077, 0, 0, 983080, 0, 0, 983081, 0, 0, 983083, 0, 0, 983085, 0, 0, 983087, 0, 0, 983089, 0, 0, 983092, 0, 0, 983095, 0, 0, 983096, 0, 0, 983099, 0, 0, 983100, 0, 0, 983103, 0, 0, 983106, 0, 0, 983107, 0, 0, 983110, 0, 0, 983111, 0, 0, 983114, 0, 0, 983117, 0, 0, 983120, 0, 0, 983121, 0, 0, 983123, 0, 0, 983125, 0, 0, 983126, 0, 0, 983128, 0, 0, 983130, 0, 0, 983132, 0, 0, 983134, 0, 0, 983137, 0, 0, 983139, 0, 0, 983141, 0, 0, 983144, 0, 0, 983147, 0, 0, 983148, 0, 0, 983150, 0, 0, 983152, 0, 0, 983154, 0, 0, 983157, 0, 0, 983160, 0, 0 )
+
+[node name="Extra" type="TileMap" parent="."]
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+show_collision = true
+collision_layer = 7
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( -262020, 0, 0, -262017, 0, 0, -262014, 0, 0, -262011, 0, 0, -262008, 0, 0, -196484, 0, 0, -196481, 0, 0, -196478, 0, 0, -196475, 0, 0, -196472, 0, 0, -130948, 0, 0, -130945, 0, 0, -130942, 0, 0, -130939, 0, 0, -130936, 0, 0, -65412, 0, 0, -65409, 0, 0, -65406, 0, 0, -65403, 0, 0, -65400, 0, 0, 124, 0, 0, 127, 0, 0, 130, 0, 0, 133, 0, 0, 136, 0, 0, 65660, 9, 0, 65662, 7, 0, 65664, 7, 0, 65666, 7, 0, 65668, 7, 0, 65670, 7, 0, 65672, 8, 0, 196732, 11, 0, 196734, 11, 0, 196736, 11, 0, 196738, 11, 0, 196740, 11, 0, 196742, 11, 0, 196744, 11, 0, 327804, 11, 0, 327806, 11, 0, 327808, 11, 0, 327810, 11, 0, 327812, 11, 0, 327814, 11, 0, 327816, 11, 0, 458876, 11, 0, 458878, 11, 0, 458880, 11, 0, 458882, 11, 0, 458884, 11, 0, 458886, 11, 0, 458888, 11, 0, 589948, 11, 0, 589950, 11, 0, 589952, 11, 0, 589954, 11, 0, 589956, 11, 0, 589958, 11, 0, 589960, 11, 0, 721020, 11, 0, 721022, 11, 0, 721024, 11, 0, 721026, 11, 0, 721028, 11, 0, 721030, 11, 0, 721032, 11, 0, 852092, 11, 0, 852094, 11, 0, 852096, 11, 0, 852098, 11, 0, 852100, 11, 0, 852102, 11, 0, 852104, 11, 0, 1048554, 0, 0, 1048557, 0, 0, 1048560, 0, 0, 1048563, 0, 0, 1048565, 0, 0, 1048567, 0, 0, 1048570, 0, 0, 1048573, 0, 0, 1048575, 0, 0, 983042, 0, 0, 983044, 0, 0, 983046, 0, 0, 983049, 0, 0, 983052, 0, 0, 983055, 0, 0, 983058, 0, 0, 983061, 0, 0, 983063, 0, 0, 983064, 0, 0, 983066, 0, 0, 983068, 0, 0, 983071, 0, 0, 983073, 0, 0, 983075, 0, 0, 983077, 0, 0, 983080, 0, 0, 983081, 0, 0, 983083, 0, 0, 983085, 0, 0, 983087, 0, 0, 983089, 0, 0, 983092, 0, 0, 983095, 0, 0, 983096, 0, 0, 983099, 0, 0, 983100, 0, 0, 983103, 0, 0, 983106, 0, 0, 983107, 0, 0, 983110, 0, 0, 983111, 0, 0, 983114, 0, 0, 983117, 0, 0, 983120, 0, 0, 983121, 0, 0, 983123, 0, 0, 983125, 0, 0, 983126, 0, 0, 983128, 0, 0, 983130, 0, 0, 983132, 0, 0, 983134, 0, 0, 983137, 0, 0, 983139, 0, 0, 983141, 0, 0, 983144, 0, 0, 983147, 0, 0, 983148, 0, 0, 983150, 0, 0, 983152, 0, 0, 983154, 0, 0, 983157, 0, 0, 983160, 0, 0, 983164, 7, 0, 983166, 7, 0, 983168, 7, 0, 983170, 7, 0, 983172, 7, 0, 983174, 7, 0, 983175, 7, 0, 983176, 7, 0, 1114236, 11, 0, 1114238, 11, 0, 1114240, 11, 0, 1114242, 11, 0, 1114244, 11, 0, 1114246, 11, 0, 1114248, 11, 0, 1245308, 11, 0, 1245310, 11, 0, 1245312, 11, 0, 1245314, 11, 0, 1245316, 11, 0, 1245318, 11, 0, 1245320, 11, 0 )
+
+[node name="Extra2" type="TileMap" parent="."]
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+show_collision = true
+collision_layer = 7
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( 458880, 12, 0, 721029, 13, 0, 1048554, 0, 0, 1048557, 0, 0, 1048560, 0, 0, 1048563, 0, 0, 1048565, 0, 0, 1048567, 0, 0, 1048570, 0, 0, 1048573, 0, 0, 1048575, 0, 0, 983042, 0, 0, 983044, 0, 0, 983046, 0, 0, 983049, 0, 0, 983052, 0, 0, 983055, 0, 0, 983058, 0, 0, 983061, 0, 0, 983063, 0, 0, 983064, 0, 0, 983066, 0, 0, 983068, 0, 0, 983071, 0, 0, 983073, 0, 0, 983075, 0, 0, 983077, 0, 0, 983080, 0, 0, 983081, 0, 0, 983083, 0, 0, 983085, 0, 0, 983087, 0, 0, 983089, 0, 0, 983092, 0, 0, 983095, 0, 0, 983096, 0, 0, 983099, 0, 0, 983100, 0, 0, 983103, 0, 0, 983106, 0, 0, 983107, 0, 0, 983110, 0, 0, 983111, 0, 0, 983114, 0, 0, 983117, 0, 0, 983120, 0, 0, 983121, 0, 0, 983123, 0, 0, 983125, 0, 0, 983126, 0, 0, 983128, 0, 0, 983130, 0, 0, 983132, 0, 0, 983134, 0, 0, 983137, 0, 0, 983139, 0, 0, 983141, 0, 0, 983144, 0, 0, 983147, 0, 0, 983148, 0, 0, 983150, 0, 0, 983152, 0, 0, 983154, 0, 0, 983157, 0, 0, 983160, 0, 0 )
 
 [node name="Luces1" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
